@@ -1,0 +1,46 @@
+### Closure
+
+```swift
+import UIKit
+// output -> Int
+func calculator (n1: Int, n2: Int) -> Int {
+	return n1 * n2
+}
+// output -> function
+func calculator (n1: Int, n2: Int, operation: (Int, Int) -> Int) -> Int {
+	return operation(n1, n2)
+}
+func add (no1: Int, no2: Int) -> Int {
+	return no1 + no2
+}
+func multiply (no1: Int, no2: Int) -> Intj {
+	return no1 * no2
+}
+
+calculator(n1: 2, n2: 3)  // 5
+// passed in the add function as the operation
+calculator(n1: 2, n2: 3, operation: add)  // 5
+calculator(n1: 2, n2: 3, operation: multiply)  // 6
+
+// How to simplify functionality with closure
+/* 1. delete the func keyword
+	 2. move a open bracket to the beginning of the closure
+	 3. replace it instead with the keyword "in" 
+	 4. remove the datatype of the input and output
+	 5. remove the keyword "return" 
+	 6. change first parameter to $0 and second parameter to $1 
+	 7. if the last parameter is a closure, you can omit the last parameter name */
+calculator (no1: 2, no2: 3, operation: { (no1, no2) in no1 * no2 })
+calculator (no1: 2, no2: 3, operation: {$0 * $1})
+calculator (no1: 2, no2: 3 {$0 * $1})
+
+// How to use closure in real life
+imort UIKit
+
+let array = [6,2,3,9,4,1]
+func addOne (n1: Int) -> Int {
+	return n1 + 1
+}
+array.map(addOne)  // [7,3,4,10,5,2]
+array.map({$0 + 1})  // it means each value + 1 same as addOne
+```
